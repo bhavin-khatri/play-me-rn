@@ -36,4 +36,10 @@ export default {
   ic_backward: require("../res/images/ic_backward.png"),
   ic_reload: require("../res/images/ic_reload.png"),
   ic_pause: require("../res/images/ic_pause.png"),
+  ic_small_right_arrow: require("../res/images/ic_small_right_arrow.png"),
+  ic_download: require("../res/images/ic_download.png"),
+  ic_album: require("../res/images/ic_album.png"),
+  ic_music: require("../res/images/ic_music.png"),
+  ic_history: require("../res/images/ic_history.png"),
+  ic_more: require("../res/images/ic_more.png"),
 };

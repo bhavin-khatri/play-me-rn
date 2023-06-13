@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Image,
   ImageStyle,
@@ -6,11 +6,11 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
-import {Center, HStack, Icon} from 'native-base';
-import {Colors} from '../res/styles/Colors';
-import {Clickable} from './Clickable';
-import ResponsivePixels from '../res/styles/ResponsivePixels';
+} from "react-native";
+import { Center, HStack, Icon } from "native-base";
+import { Colors } from "../res/styles/Colors";
+import { Clickable } from "./Clickable";
+import ResponsivePixels from "../res/styles/ResponsivePixels";
 
 export interface IProps {
   left?: Array<Option>;
@@ -40,7 +40,7 @@ export interface Option {
   ignoreInternetConnection?: boolean;
 }
 
-const CustomHeader: React.FC<IProps> = props => {
+const CustomHeader: React.FC<IProps> = (props) => {
   const {
     backgroundColor,
     left,
@@ -55,26 +55,26 @@ const CustomHeader: React.FC<IProps> = props => {
   } = props;
 
   const _renderTitle = () => {
-    const {title, image, titleColor, subTitle, titleLeft} = props;
+    const { title, image, titleColor, subTitle, titleLeft } = props;
 
     const subtitleTextStyle: any = {
       color: titleColor,
       ...myStyles.titleStyle,
       fontSize: ResponsivePixels.size14,
-      textAlign: 'left',
+      textAlign: "left",
     };
     const titleTextStyle: any = {
       ...myStyles.titleStyle,
-      textAlign: 'left',
+      textAlign: "left",
       color: titleColor,
       fontSize: ResponsivePixels.size19,
     };
 
     if (title) {
       return (
-        <View style={{alignSelf: titleLeft ? 'flex-start' : 'center'}}>
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flexDirection: 'column'}}>
+        <View style={{ alignSelf: titleLeft ? "flex-start" : "center" }}>
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ flexDirection: "column" }}>
               <Text style={titleTextStyle}>{title}</Text>
               {subTitle ? (
                 <Text style={subtitleTextStyle}>{subTitle}</Text>
@@ -89,8 +89,8 @@ const CustomHeader: React.FC<IProps> = props => {
         <Image
           source={image}
           style={{
-            alignSelf: 'center',
-            resizeMode: 'center',
+            alignSelf: "center",
+            resizeMode: "center",
             tintColor: titleColor,
           }}
         />
@@ -100,7 +100,7 @@ const CustomHeader: React.FC<IProps> = props => {
 
   const _renderRight = () => {
     if (right) {
-      return right.map(right => _renderOption(right));
+      return right.map((right) => _renderOption(right));
     }
     if (customRightMenuOptions === undefined && isLoggedIn) {
       const defaultRightOption = [
@@ -112,13 +112,13 @@ const CustomHeader: React.FC<IProps> = props => {
           },
         },
       ];
-      return defaultRightOption.map(right => _renderOption(right));
+      return defaultRightOption.map((right) => _renderOption(right));
     }
   };
 
   const _renderLeft = () => {
     if (left) {
-      return left.map(left => _renderOption(left));
+      return left.map((left) => _renderOption(left));
     }
     if (customLeftMenuOptions === undefined && isLoggedIn) {
       const defaultLeftOption = [
@@ -130,7 +130,7 @@ const CustomHeader: React.FC<IProps> = props => {
           },
         },
       ];
-      return defaultLeftOption.map(left => _renderOption(left));
+      return defaultLeftOption.map((left) => _renderOption(left));
     }
   };
 
@@ -163,7 +163,8 @@ const CustomHeader: React.FC<IProps> = props => {
               ignoreInternetConnection !== undefined
                 ? ignoreInternetConnection
                 : true
-            }>
+            }
+          >
             <Icon name={icon} style={iconStyle} />
           </Clickable>
         );
@@ -189,13 +190,15 @@ const CustomHeader: React.FC<IProps> = props => {
         return (
           <TouchableOpacity
             style={myStyles.textContainerStyle}
-            onPress={onPress}>
+            onPress={onPress}
+          >
             <Text
               style={{
                 ...myStyles.textStyle,
                 color: color,
               }}
-              numberOfLines={1}>
+              numberOfLines={1}
+            >
               {text.toUpperCase()}
             </Text>
           </TouchableOpacity>
@@ -206,18 +209,17 @@ const CustomHeader: React.FC<IProps> = props => {
 
   const mainViewStyle: any = {
     ...myStyles.MainContainer,
-    width: '100%',
-    justifyContent: 'space-between',
+    width: "100%",
+    // backgroundColor: "red",
+    justifyContent: "space-between",
+    elevation: 0,
+    borderBottomColor: "transparent",
     borderBottomWidth: 0,
     // borderBottomColor: Colors.BackgroundGrey,
     paddingVertical: ResponsivePixels.size22,
   };
   return !titleLeft ? (
     <Center>
-      <StatusBar
-        // backgroundColor={Colors.BackgroundBlackWithOpacity(0.9)}
-        barStyle="dark-content"
-      />
       <View style={mainViewStyle}>
         {left && left[0] && left[0].text && left[0].text.length > 3 ? (
           <HStack>{_renderLeft()}</HStack>
@@ -226,9 +228,10 @@ const CustomHeader: React.FC<IProps> = props => {
         )}
         <HStack
           style={{
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}>
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
           {_renderTitle()}
         </HStack>
 
@@ -241,27 +244,22 @@ const CustomHeader: React.FC<IProps> = props => {
     </Center>
   ) : (
     <Center>
-      <StatusBar
-        backgroundColor={
-          backgroundColor || Colors.BackgroundBlackWithOpacity(0.9)
-        }
-        barStyle="dark-content"
-      />
       <View
         style={{
           ...mainViewStyle,
-        }}>
+        }}
+      >
         {left && left[0] && left[0].text && left[0].text.length > 3 ? (
-          <HStack style={{flex: 2}}>{_renderLeft()}</HStack>
+          <HStack style={{ flex: 2 }}>{_renderLeft()}</HStack>
         ) : (
-          <HStack style={{flex: 1}}>{_renderLeft()}</HStack>
+          <HStack style={{ flex: 1 }}>{_renderLeft()}</HStack>
         )}
 
-        <HStack style={{flex: 4}}>{_renderTitle()}</HStack>
+        <HStack style={{ flex: 4 }}>{_renderTitle()}</HStack>
         {right && right[0] && right[0].text && right[0].text.length > 3 ? (
-          <HStack style={{flex: 2}}>{_renderRight()}</HStack>
+          <HStack style={{ flex: 2 }}>{_renderRight()}</HStack>
         ) : (
-          <HStack style={{flex: 1}}>{_renderRight()}</HStack>
+          <HStack style={{ flex: 1 }}>{_renderRight()}</HStack>
         )}
       </View>
     </Center>
@@ -272,19 +270,19 @@ export default CustomHeader;
 
 const myStyles = {
   MainContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingHorizontal: 10,
     // backgroundColor:'red'
   },
   textStyle: {
     marginRight: 0,
     fontSize: ResponsivePixels.size17,
-    color: Colors.DefaultBlack,
+    color: Colors.Defaultwhite,
     marginTop: 5,
   },
   titleStyle: {
     fontSize: ResponsivePixels.size19,
-    fontWeight: '400',
+    fontWeight: "400",
   },
   textContainerStyle: {},
   iconStyle: {

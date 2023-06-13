@@ -177,7 +177,7 @@ export const myStyles = StyleSheet.create({
   favImage: {
     height: ResponsivePixels.size30,
     width: ResponsivePixels.size30,
-    tintColor: Colors.normalGrey,
+    tintColor: Colors.green,
   },
   musicImage: {
     height: ResponsivePixels.size350,

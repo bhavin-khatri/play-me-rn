@@ -1,12 +1,14 @@
-import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
-import {Colors} from '../../res/styles/Colors';
-import MainContainer from '../../common/MainContainer';
-import Images from '../../common/Images';
-import ResponsivePixels from '../../res/styles/ResponsivePixels';
-import {MusicList} from '../music/musicList/MusicList';
-import {navigationConstant} from '../../constants/NavigationConstant';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from "react";
+import { Image, StyleSheet, View } from "react-native";
+import { Colors } from "../../res/styles/Colors";
+import MainContainer from "../../common/MainContainer";
+import Images from "../../common/Images";
+import ResponsivePixels from "../../res/styles/ResponsivePixels";
+import { MusicList } from "../music/musicList/MusicList";
+import { navigationConstant } from "../../constants/NavigationConstant";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MyProfile } from "../profile/MyProfile";
+import { Favorites } from "../favorites/Favorites";
 
 export interface IProps {}
 
@@ -15,23 +17,7 @@ export const DashboardUI = (props: IProps) => {
   const inActiveHeightWidth = ResponsivePixels.size26;
   const activeHeightWidth = ResponsivePixels.size35;
   return (
-    <MainContainer
-      header={{
-        left: [
-          {
-            image: Images.ic_notification,
-            imageStyle: myStyles.headerImage,
-          },
-        ],
-        title: 'Play Me',
-        titleColor: Colors.normalGrey,
-        right: [
-          {
-            image: Images.ic_search,
-            imageStyle: myStyles.headerImage,
-          },
-        ],
-      }}>
+    <MainContainer>
       <Tabs.Navigator
         // default configuration from React Navigation
         initialRouteName="Home"
@@ -39,14 +25,15 @@ export const DashboardUI = (props: IProps) => {
           headerShown: false,
           tabBarActiveTintColor: Colors.Defaultblack,
           tabBarInactiveTintColor: Colors.normalGrey,
-          tabBarStyle: {...myStyles.TabView},
-        }}>
+          tabBarStyle: { ...myStyles.TabView },
+        }}
+      >
         <Tabs.Screen
-          name={'Home'}
+          name={"Home"}
           component={MusicList}
           options={{
-            tabBarLabel: '',
-            tabBarIcon: ({focused}) => {
+            tabBarLabel: "",
+            tabBarIcon: ({ focused }) => {
               let tintColor = focused ? Colors.Defaultwhite : Colors.normalGrey;
               let height = focused ? activeHeightWidth : inActiveHeightWidth;
               let width = focused ? activeHeightWidth : inActiveHeightWidth;
@@ -67,11 +54,11 @@ export const DashboardUI = (props: IProps) => {
           }}
         />
         <Tabs.Screen
-          name={navigationConstant.MUSIC_LIST}
-          component={MusicList}
+          name={navigationConstant.FAVORITES_SONGS}
+          component={Favorites}
           options={{
-            tabBarLabel: '',
-            tabBarIcon: ({focused}) => {
+            tabBarLabel: "",
+            tabBarIcon: ({ focused }) => {
               let tintColor = focused ? Colors.Defaultwhite : Colors.normalGrey;
               let height = focused ? activeHeightWidth : inActiveHeightWidth;
               let width = focused ? activeHeightWidth : inActiveHeightWidth;
@@ -92,11 +79,11 @@ export const DashboardUI = (props: IProps) => {
           }}
         />
         <Tabs.Screen
-          name={'Favorites'}
+          name={"Podcast"}
           component={MusicList}
           options={{
-            tabBarLabel: '',
-            tabBarIcon: ({focused}) => {
+            tabBarLabel: "",
+            tabBarIcon: ({ focused }) => {
               let tintColor = focused ? Colors.Defaultwhite : Colors.normalGrey;
               let height = focused ? activeHeightWidth : inActiveHeightWidth;
               let width = focused ? activeHeightWidth : inActiveHeightWidth;
@@ -117,11 +104,11 @@ export const DashboardUI = (props: IProps) => {
           }}
         />
         <Tabs.Screen
-          name={'Profile'}
-          component={MusicList}
+          name={"Profile"}
+          component={MyProfile}
           options={{
-            tabBarLabel: '',
-            tabBarIcon: ({focused}) => {
+            tabBarLabel: "",
+            tabBarIcon: ({ focused }) => {
               let tintColor = focused ? Colors.Defaultwhite : Colors.normalGrey;
 
               let height = focused ? activeHeightWidth : inActiveHeightWidth;
@@ -155,7 +142,7 @@ export const myStyles = StyleSheet.create({
     color: Colors.Defaultblack,
   },
   Button: {
-    alignItems: 'center',
+    alignItems: "center",
     marginVertical: 10,
     marginHorizontal: 20,
     padding: 10,
@@ -164,8 +151,8 @@ export const myStyles = StyleSheet.create({
   },
   ButtonLabel: {
     fontSize: 20,
-    fontWeight: '700',
-    color: 'white',
+    fontWeight: "700",
+    color: "white",
   },
   headerImage: {
     height: ResponsivePixels.size25,
@@ -178,14 +165,15 @@ export const myStyles = StyleSheet.create({
     // backgroundColor:Colors.defaultGreenColor
   },
   TabView: {
-    backgroundColor: 'transparent',
-    borderTopColor: 'transparent',
+    backgroundColor: "transparent",
+    borderTopColor: "transparent",
     // marginHorizontal: ResponsivePixels.size10,
-    position: 'absolute',
+    position: "absolute",
     // shadow: false,
     // borderRadius: 5,
     // padding: 5,
     zIndex: 100, //
+    elevation: 0,
     // bottom: 0,
   },
   bottomImage: {
