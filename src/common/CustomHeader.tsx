@@ -84,6 +84,7 @@ const CustomHeader: React.FC<IProps> = (props) => {
         </View>
       );
     }
+
     if (image) {
       return (
         <Image

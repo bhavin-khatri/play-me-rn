@@ -42,4 +42,6 @@ export default {
   ic_music: require("../res/images/ic_music.png"),
   ic_history: require("../res/images/ic_history.png"),
   ic_more: require("../res/images/ic_more.png"),
+  ic_edit: require("../res/images/ic_edit.png"),
+  ic_setting: require("../res/images/ic_setting.png"),
 };

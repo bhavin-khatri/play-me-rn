@@ -78,31 +78,7 @@ export const DashboardUI = (props: IProps) => {
             },
           }}
         />
-        <Tabs.Screen
-          name={"Podcast"}
-          component={MusicList}
-          options={{
-            tabBarLabel: "",
-            tabBarIcon: ({ focused }) => {
-              let tintColor = focused ? Colors.Defaultwhite : Colors.normalGrey;
-              let height = focused ? activeHeightWidth : inActiveHeightWidth;
-              let width = focused ? activeHeightWidth : inActiveHeightWidth;
-              return (
-                <View>
-                  <Image
-                    style={{
-                      ...myStyles.bottomImage,
-                      tintColor: tintColor,
-                      height: height,
-                      width: width,
-                    }}
-                    source={Images.ic_podcast}
-                  />
-                </View>
-              );
-            },
-          }}
-        />
+
         <Tabs.Screen
           name={"Profile"}
           component={MyProfile}

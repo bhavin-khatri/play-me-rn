@@ -1,6 +1,6 @@
-import {Component} from 'react';
-import {IntroScreenUI} from './IntroScreenUI';
-import {navigationConstant} from '../../constants/NavigationConstant';
+import { Component } from "react";
+import { IntroScreenUI } from "./IntroScreenUI";
+import { navigationConstant } from "../../constants/NavigationConstant";
 
 export interface IState {}
 export class IntroScreen extends Component<any, IState> {
@@ -12,7 +12,7 @@ export class IntroScreen extends Component<any, IState> {
   componentDidMount() {
     setTimeout(() => {
       this.navigateToDashBoard();
-    }, 5000);
+    }, 2000);
   }
 
   navigateToDashBoard() {

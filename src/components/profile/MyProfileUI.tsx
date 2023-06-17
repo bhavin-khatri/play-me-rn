@@ -4,6 +4,7 @@ import { Colors } from "../../res/styles/Colors";
 import MainContainer from "../../common/MainContainer";
 import Images from "../../common/Images";
 import ResponsivePixels from "../../res/styles/ResponsivePixels";
+import { myStrings } from "../../constants/Strings";
 
 export interface IProps {
   options: any;
@@ -14,7 +15,24 @@ export interface IProps {
 export const MyProfileUI = (props: IProps) => {
   const { goBack, options, renderDataItem } = props;
   return (
-    <MainContainer>
+    <MainContainer
+      header={{
+        left: [
+          {
+            image: Images.ic_setting,
+            imageStyle: myStyles.headerImage,
+          },
+        ],
+        title: myStrings.MY_PROFILE_TITLE,
+        titleColor: Colors.normalGrey,
+        right: [
+          {
+            image: Images.ic_edit,
+            imageStyle: myStyles.headerImage,
+          },
+        ],
+      }}
+    >
       <View style={myStyles.mainView}>
         <View style={myStyles.subView}>
           <View
